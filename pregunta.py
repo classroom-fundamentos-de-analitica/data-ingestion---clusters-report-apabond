@@ -10,9 +10,10 @@ espacio entre palabra y palabra.
 
 """
 import pandas as pd
-import re
+
 
 def ingest_data():
+    import re
     
     dictionary = {}
     contador = 0
@@ -41,6 +42,5 @@ def ingest_data():
     dictionary['principales_palabras_clave'] = ' '.join(dictionary['principales_palabras_clave'])
     df = df.append(dictionary, ignore_index=True)
     df['principales_palabras_clave'] = df['principales_palabras_clave'].str.rstrip('\.')
-    
     
     return df
