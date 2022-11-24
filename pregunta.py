@@ -26,18 +26,21 @@ def ingest_data():
                     try: 
                         dictionary['principales_palabras_clave'] = ' '.join(dictionary['principales_palabras_clave'])
                         df = df.append(dictionary, ignore_index=True)
+                        
                     except: pass
-                    dictionarya = {'cluster': int(line.split()[0]),
+                    dictionary = {'cluster': int(line.split()[0]),
                                 'cantidad_de_palabras_clave': int(line.split()[1]),
                                 'porcentaje_de_palabras_clave': float(line.split()[2].replace(',','.')),
                                 'principales_palabras_clave': line.split()[4:]}
+                    
                 else: 
                     dictonary['principales_palabras_clave'].append(' '.join(line.split()))
+                    
             contador += 1
+            
     dictionary['principales_palabras_clave'] = ' '.join(dictionary['principales_palabras_clave'])
     df = df.append(dictionary, ignore_index=True)
     df['principales_palabras_clave'] = df['principales_palabras_clave'].str.rstrip('\.')
     
     
-
     return df
